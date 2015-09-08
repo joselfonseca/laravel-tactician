@@ -10,10 +10,9 @@ before_script:
   - travis_retry composer self-update
   - travis_retry composer update --no-interaction --prefer-stable
   - travis_retry wget https://scrutinizer-ci.com/ocular.phar
-  - mkdir -p build/logs
 
 script:
-  - vendor/bin/phpunit --coverage-clover=build/logs/clover.xml
+  - vendor/bin/phpunit --coverage-clover=coverage.clover
 
 after_script:
-  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
