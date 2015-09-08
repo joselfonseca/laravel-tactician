@@ -55,3 +55,11 @@ Once you have the bus instance you can add your handler for the command to be di
 ```php
     $bus->addHandler('SomeCommand', 'SomeHandler');
 ```
+Now you can dispatch the command with the middleware.
+
+```php
+    // first parameter is the class name of the command
+    // Second parameter is an array of input data to be mapped to the command
+    // Third parameter is an array of middleware class names to be added to the stack
+    $bus->dispatch('SomeCommand', [], []);
+```
