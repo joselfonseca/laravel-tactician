@@ -1,5 +1,6 @@
 <?php
 
+
 return [
     // The locator to bind
     'locator' => 'Joselfonseca\LaravelTactician\Locator\LaravelLocator',
