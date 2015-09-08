@@ -22,7 +22,9 @@ class LaravelTacticianServiceProvider extends ServiceProvider{
      */
     public function register()
     {
-        // TODO: Implement register() method.
+        $this->app->bind('League\Tactician\Handler\Locator\HandlerLocator', 'Joselfonseca\LaravelTactician\Locator\LaravelLocator');
+        $this->app->bind('League\Tactician\Handler\MethodNameInflector\MethodNameInflector', 'League\Tactician\Handler\MethodNameInflector\HandleInflector');
+        $this->app->bind('League\Tactician\Handler\CommandNameExtractor\CommandNameExtractor', 'League\Tactician\Handler\CommandNameExtractor\ClassNameExtractor');
     }
 
 }
