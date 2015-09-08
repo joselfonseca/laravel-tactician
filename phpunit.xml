@@ -10,8 +10,8 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Jarvis Test Suite">
-            <directory>tests</directory>
+        <testsuite name="Laravel Tactician Test Suite">
+            <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
     <filter>

@@ -25,7 +25,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Joselfonseca\\LaravelTactician\\Test\\": "tests"
+            "Joselfonseca\\LaravelTactician\\Tests\\": "tests/"
         }
     },
     "extra": {
