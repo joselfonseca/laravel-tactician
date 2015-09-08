@@ -9,9 +9,11 @@ php:
 before_script:
   - travis_retry composer self-update
   - travis_retry composer update --no-interaction --prefer-stable
+  - travis_retry wget https://scrutinizer-ci.com/ocular.phar
+  - mkdir -p build/logs
 
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
 
 after_script:
-  - if [[ $TRAVIS_PHP_VERSION != 'hhvm' && $TRAVIS_PHP_VERSION != '7.0' ]]; then php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover; fi
+  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
