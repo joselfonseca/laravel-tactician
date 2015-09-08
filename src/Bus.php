@@ -58,7 +58,8 @@ class Bus implements CommandBusInterface
      * they are resolved fro the laravel container
      * @return mixed
      */
-    public function dispatch($command, array $input = [], array $middleware = []) {
+    public function dispatch($command, array $input = [], array $middleware = [])
+    {
         return $this->handleTheCommand($command, $input, $middleware);
     }
 
@@ -82,10 +83,11 @@ class Bus implements CommandBusInterface
      */
     protected function handleTheCommand($command, $input, array $middleware)
     {
-        $commandHandlerMiddleware = new CommandHandlerMiddleware($this->CommandNameExtractor,
-            $this->HandlerLocator, $this->MethodNameInflector);
         $this->bus = new CommandBus(array_merge($this->resolveMiddleware($middleware),
-            [$commandHandlerMiddleware]));
+            [
+                new CommandHandlerMiddleware($this->CommandNameExtractor,
+                    $this->HandlerLocator, $this->MethodNameInflector)
+            ]));
         return $this->bus->handle($this->mapInputToCommand($command, $input));
     }
 
@@ -100,6 +102,7 @@ class Bus implements CommandBusInterface
         foreach ($middleware as $class) {
             $m[] = app($class);
         }
+
         return $m;
     }
 
@@ -123,6 +126,7 @@ class Bus implements CommandBusInterface
                 throw new InvalidArgumentException("Unable to map input to command: {$name}");
             }
         }
+
         return $class->newInstanceArgs($dependencies);
     }
 

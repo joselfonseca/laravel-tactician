@@ -22,18 +22,6 @@ class TestBus extends TestCase{
     }
 
     /**
-     * Throws exception if the middelware parameter is not an array
-     * @expectedException Exception
-     */
-    public function test_it_throws_exception_if_middleware_not_an_array()
-    {
-        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $bus->addHandler('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand',
-            'Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandHandler');
-        $this->assertInstanceOf('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand', $bus->dispatch('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand', [], 'SomeClass'));
-    }
-
-    /**
      * Test if a a middleware can be applied to the stack
      */
     public function test_it_applies_a_middleware()
