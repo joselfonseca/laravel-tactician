@@ -13,7 +13,7 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - phpunit --coverage-text --coverage-clover=coverage.clover
+  - vendor/bin/phpunit --coverage-clover=build/logs/clover.xml
 
 after_script:
   - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
