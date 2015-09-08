@@ -1,6 +1,12 @@
 {
     "name": "joselfonseca/laravel-tactician",
     "description": "Laravel implementation of the Tactician Command Bus",
+    "keywords": [
+      "laravel",
+      "laravel-tactician",
+      "Command Bus",
+      "Tactician"
+    ],
     "license": "MIT",
     "authors": [
         {
