@@ -5,12 +5,17 @@ namespace Joselfonseca\LaravelTactician\Locator;
 use League\Tactician\Handler\Locator\HandlerLocator;
 use League\Tactician\Exception\MissingHandlerException;
 
-class LaravelLocator implements HandlerLocator{
+/**
+ * Class LaravelLocator
+ * @package Joselfonseca\LaravelTactician\Locator
+ */
+class LaravelLocator implements HandlerLocator
+{
 
     /**
      * Bind a handler instance to receive all commands with a certain class
      *
-     * @param string $handler Handler to receive class name
+     * @param string $handler          Handler to receive class name
      * @param string $commandClassName Command class e.g. "My\TaskAddedCommand"
      */
     public function addHandler($handler, $commandClassName)
@@ -54,5 +59,4 @@ class LaravelLocator implements HandlerLocator{
 
         return $this->handlers[$commandName];
     }
-
 }

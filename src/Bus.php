@@ -36,9 +36,9 @@ class Bus implements CommandBusInterface
 
 
     /**
-     * @param MethodNameInflector $MethodNameInflector
+     * @param MethodNameInflector  $MethodNameInflector
      * @param CommandNameExtractor $CommandNameExtractor
-     * @param HandlerLocator $HandlerLocator
+     * @param HandlerLocator       $HandlerLocator
      */
     public function __construct(
         MethodNameInflector $MethodNameInflector,
@@ -52,9 +52,9 @@ class Bus implements CommandBusInterface
 
     /**
      * Dispatch a command
-     * @param object $command Command to be dispatched
-     * @param array $input Array of input to map to the command
-     * @param array $middleware Array of middleware class name to add to the stack,
+     * @param object $command    Command to be dispatched
+     * @param array  $input      Array of input to map to the command
+     * @param array  $middleware Array of middleware class name to add to the stack, they are resolved fro the laravel container
      * they are resolved fro the laravel container
      * @return mixed
      */
@@ -83,12 +83,19 @@ class Bus implements CommandBusInterface
      */
     protected function handleTheCommand($command, $input, array $middleware)
     {
-        $this->bus = new CommandBus(array_merge($this->resolveMiddleware($middleware),
-            [
-                new CommandHandlerMiddleware($this->CommandNameExtractor,
-                    $this->HandlerLocator, $this->MethodNameInflector)
-            ]));
-        return $this->bus->handle($this->mapInputToCommand($command, $input));
+        $this->bus = new CommandBus(
+            array_merge(
+                $this->resolveMiddleware($middleware),
+                [
+                new CommandHandlerMiddleware(
+                    $this->CommandNameExtractor,
+                    $this->HandlerLocator,
+                    $this->MethodNameInflector
+                )
+                ]
+            )
+        );
+            return $this->bus->handle($this->mapInputToCommand($command, $input));
     }
 
     /**
@@ -129,5 +136,4 @@ class Bus implements CommandBusInterface
 
         return $class->newInstanceArgs($dependencies);
     }
-
 }

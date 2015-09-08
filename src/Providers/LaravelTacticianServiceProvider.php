@@ -4,7 +4,12 @@ namespace Joselfonseca\LaravelTactician\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelTacticianServiceProvider extends ServiceProvider{
+/**
+ * Class LaravelTacticianServiceProvider
+ * @package Joselfonseca\LaravelTactician\Providers
+ */
+class LaravelTacticianServiceProvider extends ServiceProvider
+{
 
     /**
      * Do the bindings so any implementation can be swapped
@@ -27,12 +32,14 @@ class LaravelTacticianServiceProvider extends ServiceProvider{
      */
     protected function registerConfig()
     {
-        $this->publishes([
+        $this->publishes(
+            [
             __DIR__.'/../../config/config.php' => config_path('laravel-tactician.php'),
-        ]);
+            ]
+        );
         $this->mergeConfigFrom(
-            __DIR__.'/../../config/config.php', 'laravel-tactician'
+            __DIR__.'/../../config/config.php',
+            'laravel-tactician'
         );
     }
-
 }
