@@ -66,6 +66,10 @@ Now you can dispatch the command with the middleware.
 
 For more information about the usage of the tactician command bus please visit [http://tactician.thephpleague.com/](http://tactician.thephpleague.com/)
 
+## Example
+
+Check out this example of the package implemented in a simple create order command [https://gist.github.com/joselfonseca/24ee0e96666a06b16f92](https://gist.github.com/joselfonseca/24ee0e96666a06b16f92)
+
 ##Bindings
 
 You can configure the bindings for the locator, inflector, extractor and default bus publishing the config file like so
