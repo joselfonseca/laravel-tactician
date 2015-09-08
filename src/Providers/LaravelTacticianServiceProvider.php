@@ -13,7 +13,7 @@ class LaravelTacticianServiceProvider extends ServiceProvider{
      */
     public function boot()
     {
-        // TODO: Implement register() method.
+
     }
     /**
      * Register the service provider.
