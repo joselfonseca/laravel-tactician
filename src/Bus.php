@@ -10,11 +10,15 @@ use League\Tactician\Handler\CommandHandlerMiddleware;
 use League\Tactician\Handler\MethodNameInflector\MethodNameInflector;
 use League\Tactician\Handler\CommandNameExtractor\CommandNameExtractor;
 
-class Bus
+/**
+ * Class Bus
+ * @package Joselfonseca\LaravelTactician
+ */
+class Bus implements CommandBusInterface
 {
 
     /**
-     * @var
+     * @var The Command Bus
      */
     protected $bus;
     /**
@@ -30,8 +34,11 @@ class Bus
      */
     protected $HandlerLocator;
 
+
     /**
-     *
+     * @param MethodNameInflector $MethodNameInflector
+     * @param CommandNameExtractor $CommandNameExtractor
+     * @param HandlerLocator $HandlerLocator
      */
     public function __construct(
         MethodNameInflector $MethodNameInflector,
@@ -44,9 +51,11 @@ class Bus
     }
 
     /**
-     * @param $command
-     * @param array $input
-     * @param array $middlewares
+     * Dispatch a command
+     * @param object $command Command to be dispatched
+     * @param array $input Array of input to map to the command
+     * @param array $middleware Array of middleware class name to add to the stack,
+     * they are resolved fro the laravel container
      * @return mixed
      */
     public function dispatch($command, array $input = [], array $middleware = []) {
@@ -54,8 +63,10 @@ class Bus
     }
 
     /**
-     * @param $command
-     * @param $handler
+     * Add the Command Handler
+     * @param string $command Class name of the command
+     * @param string $handler Class name of the handler to be resolved from the Laravel Container
+     * @return mixed
      */
     public function addHandler($command, $handler)
     {
@@ -63,40 +74,37 @@ class Bus
     }
 
     /**
-     * @param $middlewares
-     * @return array
-     */
-    protected function instanciateMiddlewares($middlewares)
-    {
-        if (!is_array($middlewares)) {
-            throw new InvalidArgumentException('Middlewares parameter is not an Array');
-        }
-        $m = [];
-        foreach ($middlewares as $class) {
-            if (!class_exists($class)) {
-                throw new InvalidArgumentException('The class ' . $class . ' does not exists');
-            }
-            $m[] = new $class;
-        }
-        return $m;
-    }
-
-    /**
+     * Handle the command
      * @param $command
      * @param $input
      * @param $middlewares
      * @return mixed
      */
-    protected function handleTheCommand($command, $input, $middleware)
+    protected function handleTheCommand($command, $input, array $middleware)
     {
         $commandHandlerMiddleware = new CommandHandlerMiddleware($this->CommandNameExtractor,
             $this->HandlerLocator, $this->MethodNameInflector);
-        $this->bus = new CommandBus(array_merge($this->instanciateMiddlewares($middleware),
+        $this->bus = new CommandBus(array_merge($this->resolveMiddleware($middleware),
             [$commandHandlerMiddleware]));
         return $this->bus->handle($this->mapInputToCommand($command, $input));
     }
 
     /**
+     * Resolve the middleware stack from the laravel container
+     * @param $middleware
+     * @return array
+     */
+    protected function resolveMiddleware(array $middleware)
+    {
+        $m = [];
+        foreach ($middleware as $class) {
+            $m[] = app($class);
+        }
+        return $m;
+    }
+
+    /**
+     * Map the input to the command
      * @param $command
      * @param $input
      * @return object

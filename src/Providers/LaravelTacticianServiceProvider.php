@@ -7,24 +7,32 @@ use Illuminate\Support\ServiceProvider;
 class LaravelTacticianServiceProvider extends ServiceProvider{
 
     /**
-     * Perform post-registration booting of services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-
-    }
-    /**
-     * Register the service provider.
+     * Do the bindings so any implementation can be swapped
      *
      * @return void
      */
     public function register()
     {
-        $this->app->bind('League\Tactician\Handler\Locator\HandlerLocator', 'Joselfonseca\LaravelTactician\Locator\LaravelLocator');
-        $this->app->bind('League\Tactician\Handler\MethodNameInflector\MethodNameInflector', 'League\Tactician\Handler\MethodNameInflector\HandleInflector');
-        $this->app->bind('League\Tactician\Handler\CommandNameExtractor\CommandNameExtractor', 'League\Tactician\Handler\CommandNameExtractor\ClassNameExtractor');
+        $this->registerConfig();
+        $this->app->bind('League\Tactician\Handler\Locator\HandlerLocator', config('laravel-tactician.locator'));
+        $this->app->bind('League\Tactician\Handler\MethodNameInflector\MethodNameInflector', config('laravel-tactician.inflector'));
+        $this->app->bind('League\Tactician\Handler\CommandNameExtractor\CommandNameExtractor', config('laravel-tactician.extractor'));
+        $this->app->bind('Joselfonseca\LaravelTactician\CommandBusInterface', config('laravel-tactician.bus'));
+    }
+
+    /**
+     * Register config.
+     *
+     * @return void
+     */
+    protected function registerConfig()
+    {
+        $this->publishes([
+            __DIR__.'/../../config/config.php' => config_path('laravel-tactician.php'),
+        ]);
+        $this->mergeConfigFrom(
+            __DIR__.'/../../config/config.php', 'laravel-tactician'
+        );
     }
 
 }

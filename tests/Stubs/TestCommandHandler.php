@@ -7,7 +7,7 @@ class TestCommandHandler {
 
     public function handle($command)
     {
-        return "Handled";
+        return $command;
     }
 
 }
