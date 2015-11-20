@@ -1,18 +1,15 @@
+sudo: false
 language: php
-
 php:
   - 5.5
   - 5.6
-  - 7.0
   - hhvm
-
+  - 7
 before_script:
-  - travis_retry composer self-update
-  - travis_retry composer update --no-interaction --prefer-stable
-  - travis_retry wget https://scrutinizer-ci.com/ocular.phar
-
+  - composer self-update
+  - composer install
 script:
-  - vendor/bin/phpunit --coverage-clover=coverage.clover
-
+  - phpunit --coverage-clover=coverage.clover
 after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover

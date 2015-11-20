@@ -35,7 +35,9 @@
             "Joselfonseca\\LaravelTactician\\Tests\\": "tests/"
         }
     },
+    "config": {
+        "preferred-install": "dist"
+    },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "preferred-install": "dist"
+    "prefer-stable": true
 }
