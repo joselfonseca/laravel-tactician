@@ -35,4 +35,36 @@ class TestBus extends TestCase{
         $this->assertEquals('Handled', $commandHandled->addedPropertyInMiddleware);
     }
 
+    /**
+     * Test if the bus is able to map a property in the command
+     */
+    public function test_it_maps_input_to_command()
+    {
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand',
+            'Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandHandler');
+        $commandHandled = $bus->dispatch('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand', [
+            'property' => 'Jhon Doe'
+        ], [
+            'Joselfonseca\LaravelTactician\Tests\Stubs\Middleware'
+        ]);
+        $this->assertEquals('Jhon Doe', $commandHandled->property);
+    }
+
+    /**
+     * Test the InvalidArgumentException
+     * @expectedException InvalidArgumentException
+     */
+    public function test_it_trows_exception_if_input_can_not_be_mapped_to_the_command()
+    {
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandInput',
+            'Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandHandler');
+        $commandHandled = $bus->dispatch('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandInput', [
+
+        ], [
+            'Joselfonseca\LaravelTactician\Tests\Stubs\Middleware'
+        ]);
+    }
+
 }

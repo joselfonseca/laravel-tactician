@@ -52,4 +52,20 @@ class TestLaravelLocator extends TestCase{
         $this->assertInstanceOf('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandHandler', $handler);
     }
 
+    /**
+     * Add more than one command => handler to the bus
+     */
+    public function test_it_maps_array_commands()
+    {
+        $locator = app('League\Tactician\Handler\Locator\HandlerLocator');
+        $locator->addHandlers([
+            'Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand' => 'Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandHandler',
+            'Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandInput' => 'Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandSeccondHandler'
+        ]);
+        $handler = $locator->getHandlerForCommand('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand');
+        $handler2 = $locator->getHandlerForCommand('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandInput');
+        $this->assertInstanceOf('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandHandler', $handler);
+        $this->assertInstanceOf('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandSeccondHandler', $handler2);
+    }
+
 }

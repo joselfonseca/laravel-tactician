@@ -35,7 +35,7 @@ class LaravelLocator implements HandlerLocator
      *
      * @param array $commandClassToHandlerMap
      */
-    protected function addHandlers(array $commandClassToHandlerMap)
+    public function addHandlers(array $commandClassToHandlerMap)
     {
         foreach ($commandClassToHandlerMap as $commandClass => $handler) {
             $this->addHandler($handler, $commandClass);
