@@ -38,6 +38,6 @@
     "config": {
         "preferred-install": "dist"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
