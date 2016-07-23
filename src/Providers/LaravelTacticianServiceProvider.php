@@ -3,6 +3,9 @@
 namespace Joselfonseca\LaravelTactician\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Joselfonseca\LaravelTactician\Commands\MakeTacticianCommand;
+use Joselfonseca\LaravelTactician\Commands\MakeTacticianCommandCommand;
+use Joselfonseca\LaravelTactician\Commands\MakeTacticianHandlerCommand;
 
 /**
  * Class LaravelTacticianServiceProvider
@@ -23,6 +26,24 @@ class LaravelTacticianServiceProvider extends ServiceProvider
         $this->app->bind('League\Tactician\Handler\MethodNameInflector\MethodNameInflector', config('laravel-tactician.inflector'));
         $this->app->bind('League\Tactician\Handler\CommandNameExtractor\CommandNameExtractor', config('laravel-tactician.extractor'));
         $this->app->bind('Joselfonseca\LaravelTactician\CommandBusInterface', config('laravel-tactician.bus'));
+
+        // Register Command Generator
+        $this->app->singleton('laravel-tactician.make.command', function($app) {
+            return new MakeTacticianCommandCommand($app['files']);
+        });
+        $this->commands('laravel-tactician.make.command');
+
+        // Register Handler Generator
+        $this->app->singleton('laravel-tactician.make.handler', function($app) {
+            return new MakeTacticianHandlerCommand($app['files']);
+        });
+        $this->commands('laravel-tactician.make.handler');
+
+        // Register Comman+Handler Generator Command
+        $this->app->singleton('laravel-tactician.make.tactician', function($app) {
+            return new MakeTacticianCommand($app['files']);
+        });
+        $this->commands('laravel-tactician.make.tactician');
     }
 
     /**

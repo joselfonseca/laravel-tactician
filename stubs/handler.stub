@@ -1,0 +1,26 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\CommandBus\Commands\DummyClassCommand;
+
+/**
+ * Class DummyClassHandler
+ * @package App\CommandBus\Handlers
+ */
+class DummyClassHandler
+{
+    /**
+     * DummyClassHandler constructor.
+     */
+    public function __construct()
+    {
+    }
+
+    /**
+     * @param DummyClassCommand $command
+     */
+    public function handle(DummyClassCommand $command)
+    {
+    }
+}

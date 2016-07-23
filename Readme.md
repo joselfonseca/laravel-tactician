@@ -94,6 +94,23 @@ Then you can modify each class name and they will be resolved from the laravel c
     ];
 ```
 
+##Generators
+
+You can generate Commands and Handlers automatically using artisan
+
+```
+artisan make:tactician:command Foo
+artisan make:tactician:handler Foo
+```
+
+This will create FooCommand and FooHandler and place them in the app/CommandBus/Commands and app/CommandBus/Handlers respectively
+
+To run both at once
+
+```
+artisan make:tactician Foo
+```
+
 ##Tests
 
 To run the test in this package, navigate to the root folder of the project and run
