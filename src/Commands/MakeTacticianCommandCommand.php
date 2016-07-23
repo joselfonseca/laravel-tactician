@@ -27,7 +27,7 @@ class MakeTacticianCommandCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/../../stubs/command.stub';
+        return __DIR__.'/../../stubs/command.stub';
     }
 
     /**
@@ -49,6 +49,6 @@ class MakeTacticianCommandCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
-        return parent::getPath($name . "Command");
+        return parent::getPath($name.'Command');
     }
 }
