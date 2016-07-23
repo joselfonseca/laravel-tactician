@@ -40,7 +40,7 @@ class LaravelTacticianServiceProvider extends ServiceProvider
         $this->commands('laravel-tactician.make.handler');
 
         // Register Comman+Handler Generator Command
-        $this->app->singleton('laravel-tactician.make.tactician', function ($app) {
+        $this->app->singleton('laravel-tactician.make.tactician', function () {
             return new MakeTacticianCommand();
         });
         $this->commands('laravel-tactician.make.tactician');
