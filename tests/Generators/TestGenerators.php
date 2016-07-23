@@ -9,7 +9,8 @@ use Joselfonseca\LaravelTactician\Tests\TestCase;
  * Class TestGenerators
  * @package Joselfonseca\LaravelTactician\Tests\Generators
  */
-class TestGenerators extends TestCase {
+class TestGenerators extends TestCase
+{
 
     private $expectedCommandFile = __DIR__.'/../../vendor/orchestra/testbench/fixture/app/CommandBus/Commands/FooCommand.php';
     private $expectedHandlerFile = __DIR__.'/../../vendor/orchestra/testbench/fixture/app/CommandBus/Handlers/FooHandler.php';
@@ -53,14 +54,16 @@ class TestGenerators extends TestCase {
     /**
      * Generate Command using Artisan
      */
-    protected function makeCommand() {
+    protected function makeCommand()
+    {
         Artisan::call('make:tactician:command', ['name' => 'Foo']);
     }
 
     /**
      * Generate Handler using Artisan
      */
-    protected function makeHandler() {
+    protected function makeHandler()
+    {
         Artisan::call('make:tactician:handler', ['name' => 'Foo']);
     }
 
@@ -138,5 +141,4 @@ class TestGenerators extends TestCase {
         $this->assertTrue(strpos(file_get_contents($this->expectedHandlerFile), '* @param FooCommand $command') !== false);
         $this->assertTrue(strpos(file_get_contents($this->expectedHandlerFile), 'public function handle(FooCommand $command)') !== false);
     }
-
 }
