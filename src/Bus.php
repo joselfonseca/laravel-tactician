@@ -12,6 +12,7 @@ use League\Tactician\Handler\CommandNameExtractor\CommandNameExtractor;
 
 /**
  * The default Command bus Using Tactician, this is an implementation to dispatch commands to their handlers trough a middleware stack, every class is resolved from the laravel's service container.
+ *
  * @package Joselfonseca\LaravelTactician
  */
 class Bus implements CommandBusInterface
@@ -52,9 +53,10 @@ class Bus implements CommandBusInterface
 
     /**
      * Dispatch a command
-     * @param object $command    Command to be dispatched
-     * @param array  $input      Array of input to map to the command
-     * @param array  $middleware Array of middleware class name to add to the stack, they are resolved from the laravel container
+     *
+     * @param  object $command    Command to be dispatched
+     * @param  array  $input      Array of input to map to the command
+     * @param  array  $middleware Array of middleware class name to add to the stack, they are resolved from the laravel container
      * @return mixed
      */
     public function dispatch($command, array $input = [], array $middleware = [])
@@ -64,8 +66,9 @@ class Bus implements CommandBusInterface
 
     /**
      * Add the Command Handler
-     * @param string $command Class name of the command
-     * @param string $handler Class name of the handler to be resolved from the Laravel Container
+     *
+     * @param  string $command Class name of the command
+     * @param  string $handler Class name of the handler to be resolved from the Laravel Container
      * @return mixed
      */
     public function addHandler($command, $handler)
@@ -75,9 +78,10 @@ class Bus implements CommandBusInterface
 
     /**
      * Handle the command
-     * @param $command
-     * @param $input
-     * @param $middleware
+     *
+     * @param  $command
+     * @param  $input
+     * @param  $middleware
      * @return mixed
      */
     protected function handleTheCommand($command, $input, array $middleware)
@@ -99,7 +103,8 @@ class Bus implements CommandBusInterface
 
     /**
      * Resolve the middleware stack from the laravel container
-     * @param $middleware
+     *
+     * @param  $middleware
      * @return array
      */
     protected function resolveMiddleware(array $middleware)
@@ -114,8 +119,9 @@ class Bus implements CommandBusInterface
 
     /**
      * Map the input to the command
-     * @param $command
-     * @param $input
+     *
+     * @param  $command
+     * @param  $input
      * @return object
      */
     protected function mapInputToCommand($command, $input)

@@ -7,6 +7,7 @@ use League\Tactician\Exception\MissingHandlerException;
 
 /**
  * Class LaravelLocator
+ *
  * @package Joselfonseca\LaravelTactician\Locator
  */
 class LaravelLocator implements HandlerLocator
