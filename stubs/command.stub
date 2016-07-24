@@ -1,0 +1,17 @@
+<?php
+
+namespace DummyNamespace;
+
+/**
+ * Class DummyClassCommand
+ * @package DummyNamespace
+ */
+class DummyClassCommand
+{
+    /**
+     * DummyClassCommand constructor.
+     */
+    public function __construct()
+    {
+    }
+}
