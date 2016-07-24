@@ -11,7 +11,7 @@ use League\Tactician\Handler\MethodNameInflector\MethodNameInflector;
 use League\Tactician\Handler\CommandNameExtractor\CommandNameExtractor;
 
 /**
- * Class Bus
+ * The default Command bus Using Tactician, this is an implementation to dispatch commands to their handlers trough a middleware stack, every class is resolved from the laravel's service container.
  * @package Joselfonseca\LaravelTactician
  */
 class Bus implements CommandBusInterface
@@ -77,7 +77,7 @@ class Bus implements CommandBusInterface
      * Handle the command
      * @param $command
      * @param $input
-     * @param $middlewares
+     * @param $middleware
      * @return mixed
      */
     protected function handleTheCommand($command, $input, array $middleware)
