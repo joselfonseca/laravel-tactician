@@ -4,6 +4,10 @@ namespace Joselfonseca\LaravelTactician\Commands;
 
 use Illuminate\Console\Command;
 
+/**
+ * Generate Tactician Command and Handler
+ * @package Joselfonseca\LaravelTactician\Commands
+ */
 class MakeTacticianCommand extends Command
 {
     /**
