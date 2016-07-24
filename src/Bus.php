@@ -98,7 +98,7 @@ class Bus implements CommandBusInterface
                 ]
             )
         );
-            return $this->bus->handle($this->mapInputToCommand($command, $input));
+        return $this->bus->handle($this->mapInputToCommand($command, $input));
     }
 
     /**
