@@ -2,11 +2,13 @@
 
 namespace Joselfonseca\LaravelTactician\Locator;
 
+use League\Tactician\Handler\Locator\HandlerLocator;
+
 /**
  * Interface LocatorInterface
  * @package Joselfonseca\LaravelTactician\Locator
  */
-interface LocatorInterface
+interface LocatorInterface extends HandlerLocator
 {
     /**
      * Bind a handler instance to receive all commands with a certain class

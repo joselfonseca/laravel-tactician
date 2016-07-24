@@ -5,8 +5,8 @@ namespace Joselfonseca\LaravelTactician;
 use ReflectionClass;
 use InvalidArgumentException;
 use League\Tactician\CommandBus;
-use League\Tactician\Handler\Locator\HandlerLocator;
 use League\Tactician\Handler\CommandHandlerMiddleware;
+use Joselfonseca\LaravelTactician\Locator\LocatorInterface;
 use League\Tactician\Handler\MethodNameInflector\MethodNameInflector;
 use League\Tactician\Handler\CommandNameExtractor\CommandNameExtractor;
 
@@ -31,7 +31,7 @@ class Bus implements CommandBusInterface
      */
     protected $MethodNameInflector;
     /**
-     * @var HandlerLocator
+     * @var LocatorInterface
      */
     protected $HandlerLocator;
 
@@ -39,12 +39,12 @@ class Bus implements CommandBusInterface
     /**
      * @param MethodNameInflector  $MethodNameInflector
      * @param CommandNameExtractor $CommandNameExtractor
-     * @param HandlerLocator       $HandlerLocator
+     * @param LocatorInterface       $HandlerLocator
      */
     public function __construct(
         MethodNameInflector $MethodNameInflector,
         CommandNameExtractor $CommandNameExtractor,
-        HandlerLocator $HandlerLocator
+        LocatorInterface $HandlerLocator
     ) {
         $this->MethodNameInflector = $MethodNameInflector;
         $this->CommandNameExtractor = $CommandNameExtractor;

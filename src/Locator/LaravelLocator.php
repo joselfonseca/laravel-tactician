@@ -2,7 +2,6 @@
 
 namespace Joselfonseca\LaravelTactician\Locator;
 
-use League\Tactician\Handler\Locator\HandlerLocator;
 use League\Tactician\Exception\MissingHandlerException;
 
 /**
@@ -10,7 +9,7 @@ use League\Tactician\Exception\MissingHandlerException;
  *
  * @package Joselfonseca\LaravelTactician\Locator
  */
-class LaravelLocator implements LocatorInterface, HandlerLocator
+class LaravelLocator implements LocatorInterface
 {
 
     /**

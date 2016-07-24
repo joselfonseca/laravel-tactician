@@ -23,7 +23,7 @@ class LaravelTacticianServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerConfig();
-        $this->app->bind('League\Tactician\Handler\Locator\HandlerLocator', config('laravel-tactician.locator'));
+        $this->app->bind('Joselfonseca\LaravelTactician\Locator\LocatorInterface', config('laravel-tactician.locator'));
         $this->app->bind('League\Tactician\Handler\MethodNameInflector\MethodNameInflector', config('laravel-tactician.inflector'));
         $this->app->bind('League\Tactician\Handler\CommandNameExtractor\CommandNameExtractor', config('laravel-tactician.extractor'));
         $this->app->bind('Joselfonseca\LaravelTactician\CommandBusInterface', config('laravel-tactician.bus'));
