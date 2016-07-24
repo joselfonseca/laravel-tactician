@@ -10,8 +10,14 @@ use League\Tactician\Exception\MissingHandlerException;
  *
  * @package Joselfonseca\LaravelTactician\Locator
  */
-class LaravelLocator implements HandlerLocator
+class LaravelLocator implements LocatorInterface, HandlerLocator
 {
+
+    /**
+     * The handlers
+     * @var
+     */
+    protected $handlers;
 
     /**
      * Bind a handler instance to receive all commands with a certain class

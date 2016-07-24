@@ -19,7 +19,7 @@ class Bus implements CommandBusInterface
 {
 
     /**
-     * @var The Command Bus
+     * @var CommandBus
      */
     protected $bus;
     /**
