@@ -5,7 +5,6 @@ namespace Joselfonseca\LaravelTactician\Middleware;
 use DB;
 use League\Tactician\Middleware;
 
-
 /**
  * Run the command in a database transaction.
  * @package Joselfonseca\LaravelTactician\Middleware
