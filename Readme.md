@@ -8,7 +8,7 @@ Laravel Tactician in an implementation of the Command Bus Tactician by Ross Tuck
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/joselfonseca/laravel-tactician/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/joselfonseca/laravel-tactician/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4bef582c-187d-4cbe-bcf8-021d7d6e5f5d/small.png)](https://insight.sensiolabs.com/projects/4bef582c-187d-4cbe-bcf8-021d7d6e5f5d)
 
-##Installation
+## Installation
 
 To install this update your composer.json file to require
 
@@ -26,7 +26,7 @@ Once the dependencies have been downloaded, add the service provider to your con
 ```
 You are done with the installation!
 
-##Usage
+## Usage
 
 To use the command bus you can resolve the bus from the laravel container like so
 
@@ -71,7 +71,7 @@ For more information about the usage of the tactician command bus please visit [
 
 Check out this example of the package implemented in a simple create order command [https://gist.github.com/joselfonseca/24ee0e96666a06b16f92](https://gist.github.com/joselfonseca/24ee0e96666a06b16f92)
 
-##Bindings
+## Bindings
 
 You can configure the bindings for the locator, inflector, extractor and default bus publishing the config file like so
  
@@ -94,7 +94,7 @@ Then you can modify each class name and they will be resolved from the laravel c
     ];
 ```
 
-##Generators
+## Generators
 
 You can generate Commands and Handlers automatically using artisan
 
@@ -111,7 +111,17 @@ To run both at once
 artisan make:tactician Foo
 ```
 
-##Tests
+## Middleware included
+
+Laravel tactician includes some useful middleware you can use in your commands
+
+- Database Transactions: This Middleware will run the command inside a database transaction, if any exception is thrown the transaction won't be committed and the database will stay intact, you can find this middleware in `Joselfonseca\LaravelTactician\Middleware\DatabaseTransactions`.  
+
+## Change log
+
+Please see the releases page [https://github.com/joselfonseca/laravel-tactician/releases](https://github.com/joselfonseca/laravel-tactician/releases)
+
+## Tests
 
 To run the test in this package, navigate to the root folder of the project and run
 
@@ -139,4 +149,4 @@ If you discover any security related issues, please email jose at ditecnologia d
 
 ## License
 
-The MIT License (MIT). Please see [License File](docs/license.md) for more information.
+The MIT License (MIT). Please see [License File](license.md) for more information.

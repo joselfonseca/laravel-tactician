@@ -5,6 +5,7 @@ namespace Joselfonseca\LaravelTactician;
 use ReflectionClass;
 use InvalidArgumentException;
 use League\Tactician\CommandBus;
+use League\Tactician\Plugins\LockingMiddleware;
 use League\Tactician\Handler\CommandHandlerMiddleware;
 use Joselfonseca\LaravelTactician\Locator\LocatorInterface;
 use League\Tactician\Handler\MethodNameInflector\MethodNameInflector;
@@ -88,14 +89,9 @@ class Bus implements CommandBusInterface
     {
         $this->bus = new CommandBus(
             array_merge(
+                [new LockingMiddleware()],
                 $this->resolveMiddleware($middleware),
-                [
-                new CommandHandlerMiddleware(
-                    $this->CommandNameExtractor,
-                    $this->HandlerLocator,
-                    $this->MethodNameInflector
-                )
-                ]
+                [new CommandHandlerMiddleware($this->CommandNameExtractor, $this->HandlerLocator, $this->MethodNameInflector)]
             )
         );
         return $this->bus->handle($this->mapInputToCommand($command, $input));
