@@ -122,6 +122,9 @@ class Bus implements CommandBusInterface
      */
     protected function mapInputToCommand($command, $input)
     {
+        if (is_object($command)) {
+            return $command;
+        }
         $dependencies = [];
         $class = new ReflectionClass($command);
         foreach ($class->getConstructor()->getParameters() as $parameter) {

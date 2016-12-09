@@ -21,6 +21,15 @@ class TestBus extends TestCase{
         $this->assertInstanceOf('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand', $bus->dispatch('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand', [], []));
     }
 
+
+    public function test_it_accepts_prebuilt_command_objects()
+    {
+        $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        $bus->addHandler('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand',
+            'Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandHandler');
+        $this->assertInstanceOf('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand', $bus->dispatch(app('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand'), [], []));
+    }
+
     /**
      * Test if a a middleware can be applied to the stack
      */
