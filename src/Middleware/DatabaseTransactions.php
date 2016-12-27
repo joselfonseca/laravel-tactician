@@ -16,6 +16,7 @@ class DatabaseTransactions implements Middleware
      * @param object $command
      * @param callable $next
      * @return null
+     * @codeCoverageIgnore
      */
     public function execute($command, callable $next)
     {
