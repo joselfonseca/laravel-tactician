@@ -31,10 +31,13 @@ class LaravelLazyLocator extends LaravelLocator
      */
     public function getHandlerForCommand($commandName)
     {
-        if (!isset($this->handlers[$commandName])) {
+        if (!is_callable($this->handlers[$commandName])) {
             throw MissingHandlerException::forCommand($commandName);
         }
 
-        return $this->handlers[$commandName]();
+        /** @var callable $handler */
+        $handler = $this->handlers[$commandName];
+
+        return $handler();
     }
 }
