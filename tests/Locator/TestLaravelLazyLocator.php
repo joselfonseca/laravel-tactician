@@ -4,6 +4,7 @@ namespace Joselfonseca\LaravelTactician\Tests\Locator;
 
 use Illuminate\Support\Facades\Config;
 use Joselfonseca\LaravelTactician\Locator\LaravelLazyLocator;
+use Joselfonseca\LaravelTactician\Locator\LaravelLocator;
 use Joselfonseca\LaravelTactician\Tests\TestCase;
 
 /**
@@ -18,6 +19,10 @@ class TestLaravelLazyLocator extends TestCase
         Config::set('locator', LaravelLazyLocator::class);
     }
 
+    public function tearDown() {
+        parent::tearDown();
+        Config::set('locator', LaravelLocator::class);
+    }
     /**
      * It resolves the locator
      */
