@@ -2,15 +2,21 @@
 
 namespace Joselfonseca\LaravelTactician\Locator;
 
-use League\Tactician\Handler\Locator\HandlerLocator;
 use League\Tactician\Exception\MissingHandlerException;
 
 /**
  * Class LaravelLocator
+ *
  * @package Joselfonseca\LaravelTactician\Locator
  */
-class LaravelLocator implements HandlerLocator
+class LaravelLocator implements LocatorInterface
 {
+
+    /**
+     * The handlers
+     * @var
+     */
+    protected $handlers;
 
     /**
      * Bind a handler instance to receive all commands with a certain class
@@ -35,7 +41,7 @@ class LaravelLocator implements HandlerLocator
      *
      * @param array $commandClassToHandlerMap
      */
-    protected function addHandlers(array $commandClassToHandlerMap)
+    public function addHandlers(array $commandClassToHandlerMap)
     {
         foreach ($commandClassToHandlerMap as $commandClass => $handler) {
             $this->addHandler($handler, $commandClass);

@@ -1,7 +1,16 @@
 filter:
-    paths: [src/*]
+    paths: ["src/*"]
+    excluded_paths:
+        - "tests/*"
 tools:
+    external_code_coverage: true
+    php_code_coverage: true
     php_sim: true
+    php_mess_detector: true
     php_pdepend: true
     php_analyzer: true
-    external_code_coverage: true
+    php_cpd: true
+    php_code_sniffer:
+        config:
+            standard: "PSR2"
+

@@ -25,8 +25,8 @@ class TestProvider extends TestCase{
      */
     public function test_it_registers_locator()
     {
-        $this->assertInstanceOf('League\Tactician\Handler\Locator\HandlerLocator',
-            app('League\Tactician\Handler\Locator\HandlerLocator'));
+        $this->assertInstanceOf('Joselfonseca\LaravelTactician\Locator\LocatorInterface',
+            app('Joselfonseca\LaravelTactician\Locator\LocatorInterface'));
     }
 
     /**
