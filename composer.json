@@ -19,7 +19,7 @@
         "league/tactician": "1.0.*"
     },
     "require-dev": {
-        "phpunit/phpunit" : "6.*",
+        "phpunit/phpunit" : "7.*",
         "scrutinizer/ocular": "~1.1",
         "mockery/mockery" : "0.9.*",
         "orchestra/testbench": "~3.5"
