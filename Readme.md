@@ -13,7 +13,7 @@ Laravel Tactician in an implementation of the Command Bus Tactician by Ross Tuck
 To install this update your composer.json file to require
 
 ```json
-    "joselfonseca/laravel-tactician" : "0.3.*"
+    "joselfonseca/laravel-tactician" : "0.4.*"
 ```
 Once the dependencies have been downloaded, add the service provider to your config/app.php file
 
@@ -64,6 +64,36 @@ Now you can dispatch the command with the middleware.
     // Third parameter is an array of middleware class names to be added to the stack
     $bus->dispatch('SomeCommand', [], []);
 ```
+
+You can map the input data array of the Command's _constructor_ with both, as a plain list of arguments or as the array itself. For example:
+
+```php
+    // Send parameters in an array of input data ...    
+    $bus->dispatch('SomeCommand', [
+        'propertyOne   => 'One',
+        'propertyTwo   => 'Two',
+        'propertyThree => 'Three',
+    ], []);
+    
+    // ... and recive them as individual parameters or ... 
+    Class SomeCommand {
+        public function __construct($propertyOne = 'A', $propertyTwo = 'B', $propertyThree = 'C'){
+            //...
+        }
+    }
+    
+    // ... recive array of input data itself 
+        Class SomeCommand {
+            public function __construct(array $data = [
+                'propertyOne   => 'A',
+                'propertyTwo   => 'B',
+                'propertyThree => 'C',
+            ]){
+                //...
+            }
+        }
+```
+Of course, you can use default values!
 
 For more information about the usage of the tactician command bus please visit [http://tactician.thephpleague.com/](http://tactician.thephpleague.com/)
 
