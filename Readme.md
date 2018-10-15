@@ -15,6 +15,13 @@ To install this update your composer.json file to require
 ```json
     "joselfonseca/laravel-tactician" : "0.4.*"
 ```
+
+#### >= laravel5.5
+
+ServiceProvider will be attached automatically
+
+#### Other
+
 Once the dependencies have been downloaded, add the service provider to your config/app.php file
 
 ```php
@@ -36,19 +43,19 @@ To use the command bus you can resolve the bus from the laravel container like s
 Or you can inject it into a class constructor
 
 ```php
-    
+
     use Joselfonseca\LaravelTactician\CommandBusInterface;
-    
+
     class MyController extends BaseController
     {
-        
+
         public function __construct(CommandBusInterface $bus)
         {
             $this->bus = $bus;
         }
-        
+
     }
-    
+
 ```
 
 Once you have the bus instance you can add your handler for the command to be dispatched
@@ -93,6 +100,7 @@ You can map the input data array of the Command's _constructor_ with both, as a 
             }
         }
 ```
+
 Of course, you can use default values!
 
 For more information about the usage of the tactician command bus please visit [http://tactician.thephpleague.com/](http://tactician.thephpleague.com/)
@@ -104,10 +112,10 @@ Check out this example of the package implemented in a simple create order comma
 ## Bindings
 
 You can configure the bindings for the locator, inflector, extractor and default bus publishing the config file like so
- 
+
 ```bash
-    php artisan vendor:publish 
-``` 
+    php artisan vendor:publish
+```
 
 Then you can modify each class name and they will be resolved from the laravel container
 
