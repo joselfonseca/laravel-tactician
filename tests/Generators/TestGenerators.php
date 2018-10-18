@@ -70,7 +70,6 @@ class TestGenerators extends TestCase
     protected function getExpectedCommandFile()
     {
         return __DIR__ . '/../../vendor/orchestra/testbench-core/laravel/app/CommandBus/Commands/FooCommand.php';
-        //return __DIR__ . '/../../vendor/orchestra/testbench-core/fixture/app/CommandBus/Commands/FooCommand.php';
     }
 
     /**
@@ -79,7 +78,6 @@ class TestGenerators extends TestCase
     protected function getExpectedHandlerFile()
     {
         return __DIR__ . '/../../vendor/orchestra/testbench-core/laravel/app/CommandBus/Handlers/FooHandler.php';
-        //return __DIR__ . '/../../vendor/orchestra/testbench-core/fixture/app/CommandBus/Handlers/FooHandler.php';
     }
 
     /**
