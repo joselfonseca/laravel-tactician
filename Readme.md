@@ -72,29 +72,29 @@ Now you can dispatch the command with the middleware.
     $bus->dispatch('SomeCommand', [], []);
 ```
 
-You can map the input data array of the Command's _constructor_ with both, as a plain list of arguments or as the array itself. For example:
+You can map the input data array of the Command's _constructor_ with plain list of arguments or the array itself. For example:
 
 ```php
     // Send parameters in an array of input data ...    
     $bus->dispatch('SomeCommand', [
-        'propertyOne   => 'One',
-        'propertyTwo   => 'Two',
-        'propertyThree => 'Three',
+        'propertyOne'   => 'One',
+        'propertyTwo'   => 'Two',
+        'propertyThree' => 'Three',
     ], []);
     
-    // ... and recive them as individual parameters or ... 
+    // ... and recive them as individual parameters ... 
     Class SomeCommand {
         public function __construct($propertyOne = 'A', $propertyTwo = 'B', $propertyThree = 'C'){
             //...
         }
     }
     
-    // ... recive array of input data itself 
+    // ... or recive array of input data itself 
         Class SomeCommand {
             public function __construct(array $data = [
-                'propertyOne   => 'A',
-                'propertyTwo   => 'B',
-                'propertyThree => 'C',
+                'propertyOne'   => 'A',
+                'propertyTwo'   => 'B',
+                'propertyThree' => 'C',
             ]){
                 //...
             }

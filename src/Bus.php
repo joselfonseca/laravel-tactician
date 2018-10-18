@@ -128,7 +128,7 @@ class Bus implements CommandBusInterface
         $dependencies = [];
         $class = new ReflectionClass($command);
         foreach ($class->getConstructor()->getParameters() as $parameter) {
-            if ($parameter->getPosition() == 0 && $parameter->isArray()) {
+            if ( $parameter->getPosition() == 0 && $parameter->isArray() ) {
                 if ($input !== []){
                     $dependencies[] = $input;
                 } else {
@@ -136,7 +136,7 @@ class Bus implements CommandBusInterface
                 }
             } else {
                 $name = $parameter->getName();
-                if (array_key_exists($name, $input)){
+                if ( array_key_exists($name, $input) ){
                     $dependencies[] = $input[$name];
                 } else {
                     $dependencies[] = $this->getDefaultValueOrFail($parameter);
@@ -153,8 +153,10 @@ class Bus implements CommandBusInterface
      * @ReflectionParameter $parameter
      * @return mixed
      */
-    private function getDefaultValueOrFail($parameter){
-        if (!$parameter->isDefaultValueAvailable())
+    private function getDefaultValueOrFail($parameter)
+    {
+        $isDefaultValueAvailable = $parameter->isDefaultValueAvailable();
+        if ( ! $isDefaultValueAvailable )
             throw new InvalidArgumentException("Unable to map input to command: {$parameter->getName()}");
 
         return $parameter->getDefaultValue();
