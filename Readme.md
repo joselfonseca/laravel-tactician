@@ -13,7 +13,7 @@ Laravel Tactician in an implementation of the Command Bus Tactician by Ross Tuck
 To install this update your composer.json file to require
 
 ```json
-    "joselfonseca/laravel-tactician" : "0.4.*"
+    "joselfonseca/laravel-tactician" : "0.5.*"
 ```
 
 #### >= laravel5.5
