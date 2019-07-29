@@ -4,3 +4,4 @@ sami.phar
 cache/
 .idea/
 **/*.bak
+composer.lock
