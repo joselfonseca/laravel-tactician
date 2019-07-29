@@ -64,16 +64,14 @@ class TestBus extends TestCase{
 
     /**
      * Test the InvalidArgumentException
-     * @expectedException InvalidArgumentException
      */
     public function test_it_trows_exception_if_input_can_not_be_mapped_to_the_command()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
         $bus->addHandler('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandInput',
                          'Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandHandler');
-        $commandHandled = $bus->dispatch('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandInput', [
-
-        ], [
+        $bus->dispatch('Joselfonseca\LaravelTactician\Tests\Stubs\TestCommandInput', [], [
             'Joselfonseca\LaravelTactician\Tests\Stubs\Middleware'
         ]);
     }

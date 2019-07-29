@@ -21,20 +21,20 @@ class TestLaravelLocator extends TestCase{
 
     /**
      * Throws exception if no handler for a command has been added
-     * @expectedException League\Tactician\Exception\MissingHandlerException
      */
     public function test_it_throws_exception_when_locator_from_laravel_container_is_not_found()
     {
+        $this->expectException(\League\Tactician\Exception\MissingHandlerException::class);
         $locator = app('Joselfonseca\LaravelTactician\Locator\LocatorInterface');
         $handler = $locator->getHandlerForCommand('TestCommand');
     }
 
     /**
      * Throws exception if laravel container can't resolve the handler class
-     * @expectedException ReflectionException
      */
     public function test_it_throws_exception_when_locator_is_not_resolve_from_laravel_container()
     {
+        $this->expectException(\ReflectionException::class);
         $locator = app('Joselfonseca\LaravelTactician\Locator\LocatorInterface');
         $locator->addHandler('SomeCommandHandler',
             'Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand');
