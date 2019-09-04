@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'locator' => Joselfonseca\LaravelTactician\Locator\LaravelLocator::class,
+    'locator' => Joselfonseca\LaravelTactician\Locator\LaravelLazyLocator::class,
 
     /*
     |--------------------------------------------------------------------------
