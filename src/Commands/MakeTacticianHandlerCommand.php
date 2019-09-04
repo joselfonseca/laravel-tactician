@@ -3,6 +3,7 @@
 namespace Joselfonseca\LaravelTactician\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 
 /**
  * Create a new Tactician Command Handler
@@ -35,14 +36,25 @@ class MakeTacticianHandlerCommand extends GeneratorCommand
     }
 
     /**
+     * Build the class with the given name.
+     *
+     * @param  string  $name
+     * @return string
+     */
+    protected function buildClass($name)
+    {
+        return str_replace('DummyCommand', class_basename($name), parent::buildClass($name));
+    }
+
+    /**
      * Get the default namespace for the class.
      *
-     * @param  string $rootNamespace
+     * @param  string  $rootNamespace
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return "$rootNamespace\\CommandBus\\Handlers";
+        return $rootNamespace.'\Commands';
     }
 
     /**

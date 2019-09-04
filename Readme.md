@@ -143,7 +143,7 @@ artisan make:tactician:command Foo
 artisan make:tactician:handler Foo
 ```
 
-This will create FooCommand and FooHandler and place them in the `app/CommandBus/Commands` and `app/CommandBus/Handlers` respectively.
+This will create FooCommand and FooHandler and place them in the `app/Commands` folder, please note that the words `Command` and `Handler` will be added to the class names respectively, so in the avobe example the clases created will be `FooCommand` and `FooHandler`.
 
 To run both at once:
 

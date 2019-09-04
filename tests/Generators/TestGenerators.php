@@ -65,11 +65,11 @@ class TestGenerators extends TestCase
     }
 
     /**
- * @return string
- */
+    * @return string
+    */
     protected function getExpectedCommandFile()
     {
-        return __DIR__ . '/../../vendor/orchestra/testbench-core/laravel/app/CommandBus/Commands/FooCommand.php';
+        return __DIR__ . '/../../vendor/orchestra/testbench-core/laravel/app/Commands/FooCommand.php';
     }
 
     /**
@@ -77,7 +77,7 @@ class TestGenerators extends TestCase
      */
     protected function getExpectedHandlerFile()
     {
-        return __DIR__ . '/../../vendor/orchestra/testbench-core/laravel/app/CommandBus/Handlers/FooHandler.php';
+        return __DIR__ . '/../../vendor/orchestra/testbench-core/laravel/app/Commands/FooHandler.php';
     }
 
     /**
@@ -96,8 +96,6 @@ class TestGenerators extends TestCase
     public function test_it_names_command()
     {
         $this->makeCommand();
-
-        $this->assertTrue(strpos(file_get_contents($this->getExpectedCommandFile()), 'Class FooCommand') !== false);
         $this->assertTrue(strpos(file_get_contents($this->getExpectedCommandFile()), 'class FooCommand') !== false);
         $this->assertTrue(strpos(file_get_contents($this->getExpectedCommandFile()), 'FooCommand constructor') !== false);
     }
@@ -109,7 +107,7 @@ class TestGenerators extends TestCase
     {
         $this->makeCommand();
 
-        $this->assertTrue(strpos(file_get_contents($this->getExpectedCommandFile()), 'namespace App\CommandBus\Commands;') !== false);
+        $this->assertTrue(strpos(file_get_contents($this->getExpectedCommandFile()), 'namespace App\Commands;') !== false);
     }
 
     /**
@@ -128,8 +126,6 @@ class TestGenerators extends TestCase
     public function test_it_names_handler()
     {
         $this->makeHandler();
-
-        $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), 'Class FooHandler') !== false);
         $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), 'class FooHandler') !== false);
         $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), 'FooHandler constructor') !== false);
     }
@@ -141,7 +137,7 @@ class TestGenerators extends TestCase
     {
         $this->makeHandler();
 
-        $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), 'namespace App\CommandBus\Handlers;') !== false);
+        $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), 'namespace App\Commands;') !== false);
     }
 
     /**
@@ -150,7 +146,6 @@ class TestGenerators extends TestCase
     public function test_it_adds_handler_to_command()
     {
         $this->makeHandler();
-
         $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), '* @param FooCommand $command') !== false);
         $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), 'public function handle(FooCommand $command)') !== false);
     }

@@ -5,3 +5,4 @@ cache/
 .idea/
 **/*.bak
 composer.lock
+.phpunit.result.cache
