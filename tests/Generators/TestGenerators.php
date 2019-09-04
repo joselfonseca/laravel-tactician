@@ -65,8 +65,8 @@ class TestGenerators extends TestCase
     }
 
     /**
- * @return string
- */
+    * @return string
+    */
     protected function getExpectedCommandFile()
     {
         return __DIR__ . '/../../vendor/orchestra/testbench-core/laravel/app/Commands/FooCommand.php';
