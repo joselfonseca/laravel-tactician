@@ -40,31 +40,21 @@ class MakeTacticianHandlerCommand extends GeneratorCommand
      *
      * @param  string  $name
      * @return string
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     protected function buildClass($name)
     {
-        $stub = $this->files->get($this->getStub());
-
-        return $this->replaceNamespace($stub, $name)->replaceCommandClass($stub, $name)->replaceClass($stub, $name);
+        return str_replace('DummyCommand', class_basename($name), parent::buildClass($name));
     }
 
     /**
      * Get the default namespace for the class.
      *
-     * @param  string $rootNamespace
+     * @param  string  $rootNamespace
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return "$rootNamespace".config('laravel-tactician.generators.root_namespace_handlers');
-    }
-
-    protected function replaceCommandClass(&$stub, $name)
-    {
-        $name = $this->laravel->getNamespace().config('laravel-tactician.generators.root_namespace_commands').'\\'.$this->getNameInput();
-        $stub = str_replace('DummyCommand', $name, $stub);
-        return $this;
+        return $rootNamespace.'\Commands';
     }
 
     /**

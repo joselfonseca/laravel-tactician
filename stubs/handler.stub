@@ -2,8 +2,6 @@
 
 namespace DummyNamespace;
 
-use DummyCommandCommand;
-
 class DummyClassHandler
 {
     /**
