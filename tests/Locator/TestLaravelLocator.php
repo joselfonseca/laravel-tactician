@@ -3,6 +3,7 @@
 namespace Joselfonseca\LaravelTactician\Tests\Locator;
 
 use Joselfonseca\LaravelTactician\Tests\TestCase;
+use Illuminate\Contracts\Container\BindingResolutionException;
 
 /**
  * Class TestLaravelLocator
@@ -34,7 +35,7 @@ class TestLaravelLocator extends TestCase{
      */
     public function test_it_throws_exception_when_locator_is_not_resolve_from_laravel_container()
     {
-        $this->expectException(\ReflectionException::class);
+        $this->expectException(BindingResolutionException::class);
         $locator = app('Joselfonseca\LaravelTactician\Locator\LocatorInterface');
         $locator->addHandler('SomeCommandHandler',
             'Joselfonseca\LaravelTactician\Tests\Stubs\TestCommand');

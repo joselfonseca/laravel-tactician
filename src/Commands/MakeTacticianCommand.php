@@ -15,7 +15,7 @@ class MakeTacticianCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:tactician {name}';
+    protected $signature = 'make:tactician {command}';
 
     /**
      * The console command description.

@@ -2,12 +2,8 @@
 
 namespace DummyNamespace;
 
-use App\CommandBus\Commands\DummyClassCommand;
+use DummyCommandCommand;
 
-/**
- * Class DummyClassHandler
- * @package App\CommandBus\Handlers
- */
 class DummyClassHandler
 {
     /**
@@ -18,9 +14,9 @@ class DummyClassHandler
     }
 
     /**
-     * @param DummyClassCommand $command
+     * @param DummyCommandCommand $command
      */
-    public function handle(DummyClassCommand $command)
+    public function handle(DummyCommandCommand $command)
     {
     }
 }

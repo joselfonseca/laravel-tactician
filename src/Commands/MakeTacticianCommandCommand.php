@@ -3,6 +3,7 @@
 namespace Joselfonseca\LaravelTactician\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 
 /**
  * Create a new Tactician Command
@@ -42,7 +43,7 @@ class MakeTacticianCommandCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return "$rootNamespace\\CommandBus\\Commands";
+        return "$rootNamespace".config('laravel-tactician.generators.root_namespace_commands');
     }
 
     /**

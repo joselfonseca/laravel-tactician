@@ -2,10 +2,6 @@
 
 namespace DummyNamespace;
 
-/**
- * Class DummyClassCommand
- * @package DummyNamespace
- */
 class DummyClassCommand
 {
     /**

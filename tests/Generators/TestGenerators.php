@@ -96,8 +96,6 @@ class TestGenerators extends TestCase
     public function test_it_names_command()
     {
         $this->makeCommand();
-
-        $this->assertTrue(strpos(file_get_contents($this->getExpectedCommandFile()), 'Class FooCommand') !== false);
         $this->assertTrue(strpos(file_get_contents($this->getExpectedCommandFile()), 'class FooCommand') !== false);
         $this->assertTrue(strpos(file_get_contents($this->getExpectedCommandFile()), 'FooCommand constructor') !== false);
     }
@@ -128,8 +126,6 @@ class TestGenerators extends TestCase
     public function test_it_names_handler()
     {
         $this->makeHandler();
-
-        $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), 'Class FooHandler') !== false);
         $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), 'class FooHandler') !== false);
         $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), 'FooHandler constructor') !== false);
     }
@@ -150,7 +146,7 @@ class TestGenerators extends TestCase
     public function test_it_adds_handler_to_command()
     {
         $this->makeHandler();
-
+        dd(file_get_contents($this->getExpectedHandlerFile()));
         $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), '* @param FooCommand $command') !== false);
         $this->assertTrue(strpos(file_get_contents($this->getExpectedHandlerFile()), 'public function handle(FooCommand $command)') !== false);
     }

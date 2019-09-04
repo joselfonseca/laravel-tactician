@@ -50,4 +50,19 @@ return [
 
     'bus' => Joselfonseca\LaravelTactician\Bus::class,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Generators config
+    |--------------------------------------------------------------------------
+    |
+    | Update this variables to update the path where the 
+    | commands and handlers will be created
+    |
+    */
+
+    'generators' => [
+        'root_namespace_commands' => '\\CommandBus\\Commands',
+        'root_namespace_handlers' => '\\CommandBus\\Handlers',
+    ]
+
 ];
